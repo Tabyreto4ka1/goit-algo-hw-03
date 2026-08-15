@@ -10,6 +10,8 @@ def normalize_phone(phone_number):
         return phone_number #Якщо на початку є"+38" - просто повртаємо
     elif match_2:
         return "+" + phone_number #Якщо на почаку є лише "38" додаємо + і повертаємо
+    elif phone_number[0] !=  "0":
+        return "+"+phone_number #Якщо всі попередні умови не підходять і номер починаєть не на 0 то цей номер іноземний
     else:
         return "+38"+phone_number #Якщо на почаку немає нічого з вище вказаого додаємо +38
         
@@ -24,6 +26,7 @@ raw_numbers = [
     "(050)8889900",
     "38050-111-22-22",
     "38050 111 22 11   ",
+    "48 512 345 678"
 ]
 
 sanitized_numbers = [normalize_phone(num) for num in raw_numbers]
